@@ -4,13 +4,13 @@ import * as aws from "@pulumi/aws";
 import * as pulumi from "@pulumi/pulumi";
 
 // Get the id for the latest Amazon Linux AMI
-const ami = aws.ec2.getAmi({
+const ami = aws.ec2.getAmiOutput({
     filters: [
         { name: "name", values: ["amzn-ami-hvm-*-x86_64-ebs"] },
     ],
     owners: ["137112412989"], // Amazon
     mostRecent: true,
-}).then(result => result.id);
+}).id;
 
 // create a new security group for port 80
 const group = new aws.ec2.SecurityGroup("web-secgrp", {
