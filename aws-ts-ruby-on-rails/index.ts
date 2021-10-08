@@ -15,7 +15,7 @@ const webSg = new aws.ec2.SecurityGroup("webServerSecurityGroup", {
     ],
 });
 
-const amiId = aws.ec2.getAmi({
+const amiId = aws.ec2.getAmiOutput({
     filters: [
         {
             name: "name",
@@ -28,7 +28,7 @@ const amiId = aws.ec2.getAmi({
     ],
     mostRecent: true,
     owners: ["137112412989"],
-}, { async: true }).then(ami => ami.id);
+}, { async: true }).id;
 
 const webServer = new aws.ec2.Instance("webServer", {
     ami: amiId,
