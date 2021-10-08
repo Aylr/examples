@@ -6,13 +6,13 @@ const aws = require("@pulumi/aws");
 let size = "t2.micro";    // t2.micro is available in the AWS free tier
 
 // Get the id for the latest Amazon Linux AMI
-let ami = aws.ec2.getAmi({
+let ami = aws.ec2.getAmiOutput({
     filters: [
         { name: "name", values: ["amzn-ami-hvm-*-x86_64-ebs"] },
     ],
     owners: ["137112412989"], // Amazon
     mostRecent: true,
-}, { async: true }).then(result => result.id);
+}, { async: true }).id;
 
 // create a new security group for port 80
 let group = new aws.ec2.SecurityGroup("web-secgrp", {
