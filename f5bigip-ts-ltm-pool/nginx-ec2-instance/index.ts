@@ -7,11 +7,11 @@ const baseTags = {
     project: `${pulumi.getProject()}-${pulumi.getStack()}`,
 };
 
-const ubuntuAmiId = aws.ec2.getAmi({
+const ubuntuAmiId = aws.ec2.getAmiOutput({
     mostRecent: true,
     nameRegex: "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
     owners: ["099720109477"],
-}, { async: true }).then(ami => ami.id);
+}, { async: true }).id;
 
 const nginxUserData =
     `#!/bin/bash
