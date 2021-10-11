@@ -33,14 +33,14 @@ const firewall = new aws.ec2.SecurityGroup("bigIp", {
         --filters "Name=product-code,Values=8esk90vx7v713sa0muq2skw3j" \
         --filters "Name=name,Values='F5 Networks BIGIP-14.0.0.1-0.0.2 PAYG - Good 25Mbps *'"
 */
-const bigIpAmiId = aws.ec2.getAmi({
+const bigIpAmiId = aws.ec2.getAmiOutput({
     mostRecent: true,
     owners: ["679593333241"],
     filters: [
         { name: "product-code", values: ["8esk90vx7v713sa0muq2skw3j"] },
         { name: "name", values: ["F5 Networks BIGIP-14.0.0.1-0.0.2 PAYG - Good 25Mbps *"] },
     ],
-}).then(ami => ami.id);
+}).id;
 
 const bigIpUserData =
     `#!/bin/bash
