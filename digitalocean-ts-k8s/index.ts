@@ -28,7 +28,7 @@ const cluster = new digitalocean.KubernetesCluster("do-cluster", {
 // field changes on every `pulumi update`.
 const kubeconfig = cluster.status.apply(status => {
     if (status === "running") {
-        const clusterDataSource = cluster.name.apply(name => digitalocean.getKubernetesCluster({name}));
+        const clusterDataSource = digitalocean.getKubernetesClusterOutput({name: cluster.name});
         return clusterDataSource.kubeConfigs[0].rawConfig;
     } else {
         return cluster.kubeConfigs[0].rawConfig;
