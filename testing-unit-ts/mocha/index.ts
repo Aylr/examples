@@ -10,14 +10,14 @@ export const group = new aws.ec2.SecurityGroup("web-secgrp", {
     ],
 });
 
-const amiId = aws.ec2.getAmi({
+const amiId = aws.ec2.getAmiOutput({
     mostRecent: true,
     owners: ["099720109477"],
     filters: [{
         name: "name",
         values: ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"],
     }],
-}).then(ami => ami.id);
+}).id;
 
 export const server = new aws.ec2.Instance("web-server-www", {
     instanceType: "t2.micro",
