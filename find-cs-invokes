@@ -1,0 +1,5 @@
+#!/bin/bash
+
+n=$(cd "$1" && grep InvokeAsync $(git ls-files | grep cs$) | wc -l)
+
+echo "$n"
