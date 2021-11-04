@@ -8,7 +8,7 @@ bucket_slug = config.require("bucket_name")
 SLUG = config.require("slug")
 ENVIRONMENT = config.require("environment")
 TAGS = config.require_object("tags")
-bucket_name = f"{bucket_slug}-{ENVIRONMENT}"
+bucket_name = f"{bucket_slug}.{ENVIRONMENT}"
 
 
 def slugify(resource: str) -> str:

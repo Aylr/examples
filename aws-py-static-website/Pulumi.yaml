@@ -15,10 +15,3 @@ template:
       description: Relative path to the website's contents (e.g. the `./www` folder)
     aws-py-static-website:environment:
       description: dev or prod
-    aws-py-static-website:tags:
-      description: Descriptive tags
-      default:
-        client: wow
-        project: residential-snowplow-schema-repo
-        snowplow: true
-        environment: dev

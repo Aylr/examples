@@ -1,0 +1,10 @@
+config:
+  aws:region: us-west-1
+  aws-py-static-website:bucket_name: wow.schemas
+  aws-py-static-website:slug: wow.schemas
+  aws-py-static-website:environment: prod
+  aws-py-static-website:tags:
+    client: wow
+    project: residential-snowplow-schema-repo
+    snowplow: true
+    environment: prod
